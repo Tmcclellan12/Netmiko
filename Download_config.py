@@ -21,6 +21,7 @@ with open('myswitches.txt') as switches:
         for devices in arubav_1:
             net_connect = ConnectHandler(**arubav_1)
             output = net_connect.send_command('show run')
-            with open('backup_' + IP, 'w') as f:
+            IPStr=IP.replace('.','_')
+            with open('backup_' + IPStr, 'w') as f:
                 print (output, file=f)
         
