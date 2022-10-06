@@ -1,8 +1,10 @@
 # Netmiko_Aruba
 
 
-Download and Save Running Configuration of HP Aruba Switch
+Run a command against a device in txt file called "myswitches.txt."
 
-*Note* When using nano as my texteditor on my MacBook, an invisible linefeed(lf) is added behind each IP address. This causes the behavior of a "?" being placed behind the file name. By opening the file with Notepad++, I was able to remove the lf and the "?" was not added to the exported filename. 
+Your username/password combination will be asked upon run of the script. 
 
-**shout out to my friend Halim @ https://www.linkedin.com/in/halim-boumedjirek-28b6a92/ for helping me identify that problem**
+Output will print the output of the command into a file in the directory of the python file and will look something like the following: 
+
+1.1.1.1.txt 
