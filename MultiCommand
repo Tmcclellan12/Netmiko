@@ -1,0 +1,29 @@
+from netmiko import ConnectHandler
+import getpass
+
+#get username from user
+username=input("Enter SSH username: ")
+#get password from user
+password=getpass.getpass("Enter SSH password: ")
+#define multiple commands
+commands = ['interface lo55', 'ip addr 192.168.8.8 255.255.255.0', 'commit', 'do show ipv4 int b']
+#open file to populate IP
+with open('myswitches.txt') as switches:
+    for IP in switches:
+        ciscov_1 = {
+            'device_type': 'cisco_xr',
+            'ip': IP,
+            'username': username , 
+            'password': password ,
+        }
+        print('Connecting to ' + IP)
+        print('-'*65)
+
+        for devices in ciscov_1:
+            net_connect = ConnectHandler(**ciscov_1)
+            output = net_connect.send_config_set(commands)
+            read_timeout=300
+            IPStr=IP.strip()
+            with open(IPStr + '.txt', 'w') as f:
+                print (output, file=f)
+        
